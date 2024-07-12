@@ -1,16 +1,13 @@
 
-const ListaDePendientes=()=>{
+const ListaDePendientes=(props)=>{
+    const eliminarTarea = () => {
+        props.eliminarTareaDeLaLista(props.id)
+    }
 
     return(
         <>
-    <ul>
-        <li>Hacer las compras</li>
-        <button>Borrar</button>
-        <li>Planchar la ropa</li>
-        <button>Borrar</button>
-         <li>Arreglar el jardin</li>
-         <button>Borrar</button>
-    </ul>
+            <p>{props.tareas}</p>
+            <button onClick={eliminarTarea}>Eliminar</button>
         </>
     );
 

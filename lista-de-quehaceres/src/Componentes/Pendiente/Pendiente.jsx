@@ -1,9 +1,8 @@
-import AgregarPendientes from "../Formulario/AgregarPendientes";
-const Pendiente=({tareas})=>{
+
+const Pendiente=()=>{
     return(
         <>
-        <input type="checbox" checked={tareas.completado}></input>
-        <span>{tareas.descripcion}</span>
+        <input type="checbox"></input>
         </>
     );
 

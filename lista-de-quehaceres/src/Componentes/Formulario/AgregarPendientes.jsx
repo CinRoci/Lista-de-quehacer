@@ -1,35 +1,27 @@
 import { useState } from "react";
 
- const AgregarPendientes = ({setTareas, tareas}) =>{
-    const [descripcion, seteDescripcion]= useState("")
-    const tareaActual = (descripcion) =>{
-        const nuevaTarea = {
-            id: Math.random(),
-            descripcion:descripcion,
-            completado:false,
 
+ const AgregarPendientes = (props) =>{
+    const[agregarTarea, setAgregarTarea]=useState("");
+   
+    const enviarNuevaTarea=(e) => {
+        e.preventDefault();
+        const nuevoPendiente={
+            tarea
         }
-        setTareas ([...tareas, nuevaTarea]);
-    };
-    const handleChange=(e)=>{
-       seteDescripcion(e.target.value);
+        props.actualizarLista(nuevoPendiente);
+        setAgregarTarea("");
+
     }
-   const handleSubmit = (e) => {
-    e.preventDefault();
-        if(descripcion.trim()){
-            tareaActual(descripcion);
-            seteDescripcion("");
-
-        }
-
-   }
-
- 
+  
     return(
         <>
-        <form onSubmit={handleSubmit}>
-            <input type="text" placeholder="Agrega tarea" value={descripcion} onChange={(e)=>handleChange(e)}></input>
-            <input type="submit" placeholder="Agregar"></input>
+        <form onSubmit={enviarNuevaTarea}>
+            <input type="text" 
+                    placeholder="Agregar tarea"
+                    value={agregarTarea}
+                    onChange={(e)=> setAgregarTarea (e.target.value)}></input>
+            <button onClick={actualizarLista}>Agregar</button>
         </form>
         </>
     );
