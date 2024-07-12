@@ -2,15 +2,17 @@ import { useState } from "react";
 
 
  const AgregarPendientes = (props) =>{
-    const[agregarTarea, setAgregarTarea]=useState("");
+    const[descripcionTarea, setDescripcionTarea]=useState("");
    
     const enviarNuevaTarea=(e) => {
         e.preventDefault();
         const nuevoPendiente={
-            tarea
+            id:Math.random(),
+            descripcion:descripcionTarea
+
         }
         props.actualizarLista(nuevoPendiente);
-        setAgregarTarea("");
+        setDescripcionTarea("");
 
     }
   
@@ -19,9 +21,9 @@ import { useState } from "react";
         <form onSubmit={enviarNuevaTarea}>
             <input type="text" 
                     placeholder="Agregar tarea"
-                    value={agregarTarea}
-                    onChange={(e)=> setAgregarTarea (e.target.value)}></input>
-            <button onClick={actualizarLista}>Agregar</button>
+                    value={descripcionTarea}
+                    onChange={(e)=> setDescripcionTarea(e.target.value)}></input>
+            <input type="submit" placeholder="Agregar"></input>
         </form>
         </>
     );
